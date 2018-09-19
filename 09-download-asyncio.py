@@ -4,6 +4,9 @@ in asyncio, `yield from` is used to give control back to the event loop
 the `yield from` is the coroutine equivalent of `add_done_callback`
 as PEP492, asyncio introduced the `async` and `await` for the `coroutine` and
 `yield from` functions respectively
+the async tried to strictly define coroutines and separate it from generators
+hence removing the `__iter__` and `__next__` implementations and can be inspected
+with `inspect.iscoroutine()` function
 """
 
 # TODO check what the heck is wrong with `async`
@@ -31,8 +34,8 @@ async def get_img(cc):
     image = await resp.read()
     return image
 
-@asyncio.coroutine
-def download_one(cc):
+
+async def download_one(cc):
     image = await get_img(cc)
     show(cc)
     save_img(image, cc.lower() + '.png')
