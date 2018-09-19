@@ -45,11 +45,11 @@ from download_sync import BASE_URL, main, save_img, show
 # previous python versions before 3.5
 
 async def download_one(cc):
-    url = '{}/{cc}/'.format(BASE_URL, cc=cc.lower())
+    url = '{}{cc}.jpg'.format(BASE_URL, cc=cc.lower())
     async with aiohttp.ClientSession() as session:
         image = await get_img(session, url)
     show(cc)
-    save_img(image, cc.lower() + '.png')
+    save_img(image, cc.lower() + '.jpg')
     return cc
 
 def download_many(cc_list):
