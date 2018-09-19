@@ -56,8 +56,7 @@ def download_many(cc_list):
     loop = asyncio.get_event_loop()
     to_do = [download_one(cc) for cc in sorted(cc_list)]
     wait_coro = asyncio.wait(to_do)
-    # res, _ = loop.run_until_complete(wait_coro)
-    res, _ = loop.call_soon_threadsafe(callback)
+    res, _ = loop.run_until_complete(wait_coro)
     loop.close()
     return len(res)
 
@@ -67,7 +66,6 @@ async def get_img(session, url):
             return await response.read()
 
 
-# With async library you can add multiple threaded concurrent applications
 
 
 if __name__ == '__main__':

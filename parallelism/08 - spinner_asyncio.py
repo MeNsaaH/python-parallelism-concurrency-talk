@@ -11,6 +11,7 @@ import sys
 # the decorator is not a priming decorator. It helps with debugging by issuing
 # a warning when a coroutine is garbage collected without being yielded from
 # TODO look up the async library
+# A task must be registered with an event_loop before it can be executed
 
 
 @asyncio.coroutine
