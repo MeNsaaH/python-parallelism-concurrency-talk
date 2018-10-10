@@ -30,6 +30,8 @@ def spin(msg):
             break
     write(' ' * len(status) + '\x08' * len(status))
 
+# async
+# await
 
 @asyncio.coroutine
 def slow_function():
@@ -48,7 +50,7 @@ def supervisor():
     # operations with multiple threads. With coroutines, everything is protected
     # from interruptions by default. a coroutine can only be cancelled when
     # it is suspended at a `yield` or `yield ` point
-    spinner = asyncio.create_task(spin('thinking!'))
+    spinner = asyncio.ensure_future(spin('thinking!'))
     print('spinner object:', spinner)
     # does not block the event loop
     result = yield from slow_function()

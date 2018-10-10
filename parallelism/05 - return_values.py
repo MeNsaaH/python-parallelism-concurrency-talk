@@ -1,7 +1,8 @@
 """ Understanding Coroutines and Generators """
 
-from functools import wraps
 from collections import namedtuple
+from functools import wraps
+
 from coroutil import coroutine
 
 Result = namedtuple('Result', 'count average')
@@ -18,6 +19,6 @@ def averager():
             break
         total += term
         count += 1
+        print(f"{term} has being received for number {count}")
         average = total/count
     return Result(count, average)
- 

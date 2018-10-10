@@ -12,7 +12,7 @@ Result = namedtuple('Result', 'count average')
 # It also allows delegating returns to a sub-generator
 # it does not need special error handling to get return values
 
-# The subgenerator 
+# The subgenerator
 def averager():
     """ coroutine for calculating cumulative average """
     total = 0.0
@@ -34,12 +34,12 @@ def averager():
 # the delegating generator
 @coroutine
 def grouper(results, key):
-    """ the delegating generator """ 
+    """ the delegating generator """
     while True:
         # Each iteration creates a new instance of the subgenerator
         # each a generator operating as a coroutine
         # The delegator suspends here as long as the subgenerator
-        # keeps receiving input from the main caller 
+        # keeps receiving input from the main caller
         # upon return a new instance is created
         # the subgenerator here is automatically primed
         results[key] = yield from averager()
@@ -77,6 +77,7 @@ data = {
     'boys;m':
         [1.38, 1.5, 1.32, 1.25, 1.37, 1.48, 1.25, 1.49, 1.46],
 }
+# ('girls;kg', [value])
 
 if __name__ == '__main__':
     main_caller(data)
